@@ -1,6 +1,6 @@
 # Dev Locator
 
-Dev Locator is an application built that allows users to easily find and connect with fellow devs close to them using [GitHub's search API](https://docs.github.com/en/rest/reference/search)
+Dev Locator is an application that allows users to easily find and connect with fellow devs close to them using [GitHub's search API](https://docs.github.com/en/rest/reference/search)
 
 ## Development Contributors:
 
