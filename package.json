@@ -5,6 +5,7 @@
   "dependencies": {
     "@emotion/react": "^11.7.1",
     "@emotion/styled": "^11.6.0",
+    "@octokit/core": "^3.5.1",
     "@primer/octicons-react": "^16.2.0",
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
@@ -43,6 +44,7 @@
     ]
   },
   "devDependencies": {
+    "@octokit/types": "^6.34.0",
     "@types/babel__core": "^7.1.16",
     "@types/react": "^17.0.37",
     "@types/react-dom": "^17.0.11",
@@ -54,20 +56,7 @@
     "tailwindcss": "^3.0.17",
     "typescript": "^4.5.3"
   },
-  "babelMacros": {
-    "twin": {
-      "styled": {
-        "import": "default",
-        "from": "@emotion/styled"
-      },
-      "css": {
-        "import": "css",
-        "from": "@emotion/react"
-      },
-      "global": {
-        "import": "Global",
-        "from": "@emotion/react"
-      }
-    }
+  "resolutions": {
+    "styled-components": "^5"
   }
 }

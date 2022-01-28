@@ -1,14 +1,12 @@
 import tw from 'twin.macro'
-import { css } from 'styled-components/macro' //eslint-disable-line
 import { ReactComponent as TwitterIcon } from '../assets/twitter-icon.svg'
 import { ReactComponent as GitHubIcon } from '../assets/github-icon.svg'
-// import React, { useEffect, useState } from 'react'
 
 const Content = tw.div`flex flex-col justify-center px-6 text-gray-100`
 
-const Header = tw.header`px-5 py-4 border-b border-gray-100`
+const HeaderContainer = tw.header`px-5 py-4 border-b border-gray-100`
 
-const H2 = tw.h2`font-semibold text-gray-300`
+const Header = tw.h2`font-semibold text-gray-300`
 
 const TableContainer = tw.div`w-full max-w-2xl mx-auto shadow-lg rounded bg-secondary-800`
 
@@ -40,15 +38,7 @@ const TableDataMetaLink = tw.a`flex items-center justify-center rounded shadow c
 
 const TableDataMetaFollow = tw.a`flex items-center justify-center rounded shadow cursor-pointer bg-secondary-600 transition duration-300 hocus:bg-primary-500  ml-1 py-0.5 px-2`
 
-export default function Home() {
-
-    //   useEffect(() => {
-    //     Axios.get("http://localhost:4000/getallusers").then((res) => {
-    //       setUsers(res.data.filter((item) => {
-    //         return item
-    //       }))
-    //     })
-    //   }, );
+export default function UserTable() {
 
     let users =
         [
@@ -63,11 +53,11 @@ export default function Home() {
         <>
             <Content>
                 <TableContainer>
-                    <Header>
-                        <H2>
-                            Showing all users
-                        </H2>
-                    </Header>
+                    <HeaderContainer>
+                        <Header>
+                            {`Showing all GitHub users in...`}
+                        </Header>
+                    </HeaderContainer>
                     <TablePadding>
                         <Table>
                             <TableThead>
