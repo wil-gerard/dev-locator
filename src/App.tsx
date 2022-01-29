@@ -1,7 +1,9 @@
 import UserTable from './components/UserTable'
 import SearchBar from './components/SearchBar'
 
-function App() {
+const App = () => {
+
+
   return (
     <>
       <SearchBar />
