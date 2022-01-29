@@ -46,6 +46,9 @@ export const userSearch = async (location: string, page: number, resultsPerPage 
 
   console.log(store.users)
 
+  store.users = users
+  store.totalUsersCount = UsersResponse.data.total_count
+
   return {
     users,
     totalCount: UsersResponse?.data.total_count || 0,

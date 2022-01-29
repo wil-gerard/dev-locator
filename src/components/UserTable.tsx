@@ -1,14 +1,19 @@
 import tw from 'twin.macro'
-import { ReactComponent as TwitterIcon } from '../assets/twitter-icon.svg'
-import { ReactComponent as GitHubIcon } from '../assets/github-icon.svg'
+import { ArrowRightIcon } from '@primer/octicons-react'
+import store from '../store'
+import { useSnapshot } from 'valtio'
 
-const Content = tw.div`flex flex-col justify-center px-6 text-gray-100`
+const Content = tw.div`flex flex-col justify-center p-6 text-gray-100`
 
 const HeaderContainer = tw.header`px-5 py-4 border-b border-gray-100`
 
 const Header = tw.h2`font-semibold text-gray-300`
 
-const TableContainer = tw.div`w-full max-w-2xl mx-auto shadow-lg rounded bg-secondary-800`
+const NavContainer = tw.nav`flex justify-end`
+
+const NavNextPage = tw(ArrowRightIcon)`cursor-pointer transition duration-300 hocus:text-primary-500`
+
+const TableContainer = tw.div`w-full max-w-lg mx-auto shadow-lg rounded bg-secondary-800`
 
 const Table = tw.table`table-auto w-full`
 
@@ -30,24 +35,12 @@ const TableDataImage = tw.img`w-10 h-10 flex-shrink-0 mr-2 sm:mr-3 rounded-full`
 
 const TableDataName = tw.div`font-medium text-gray-100`
 
-const TableDataLocation = tw.div`font-medium text-gray-100 text-left`
-
 const TableDataMeta = tw.div`font-medium text-gray-100 text-left flex flex-row`
 
-const TableDataMetaLink = tw.a`flex items-center justify-center rounded shadow cursor-pointer bg-secondary-600 transition duration-300 hocus:bg-primary-500 w-6 h-6 ml-1 p-0.5`
-
-const TableDataMetaFollow = tw.a`flex items-center justify-center rounded shadow cursor-pointer bg-secondary-600 transition duration-300 hocus:bg-primary-500  ml-1 py-0.5 px-2`
+const TableDataMetaLink = tw.a`flex items-center justify-center rounded shadow cursor-pointer bg-secondary-600 transition duration-300 hocus:bg-primary-500  ml-1 py-0.5 px-2`
 
 export default function UserTable() {
-
-    let users =
-        [
-            {
-                name: "bob",
-                location: "minneapolis, mn",
-                twitter: "jimboslice"
-            }
-        ]
+    const snap = useSnapshot(store)
 
     return (
         <>
@@ -55,8 +48,11 @@ export default function UserTable() {
                 <TableContainer>
                     <HeaderContainer>
                         <Header>
-                            {`Showing all GitHub users in...`}
+                            {snap.totalUsersCount === 0 ? `Go find some devs...` : `${snap.totalUsersCount} GitHub users in ${snap.userLocation}`}
                         </Header>
+                        <NavContainer>
+                            <NavNextPage />
+                        </NavContainer>
                     </HeaderContainer>
                     <TablePadding>
                         <Table>
@@ -66,42 +62,28 @@ export default function UserTable() {
                                         Name
                                     </TableHeader>
                                     <TableHeader>
-                                        Location
-                                    </TableHeader>
-                                    <TableHeader>
-                                        Links
+                                        Link
                                     </TableHeader>
                                 </TableRow>
                             </TableThead>
                             <TableBody>
-                                {users.map((user, index) => {
+                                {snap.users?.map((user, index) => {
 
                                     return (
                                         <TableRow key={index}>
                                             <TableDataCell>
                                                 <TableDataNameContainer>
-                                                    <TableDataImage src={``} />
+                                                    <TableDataImage src={`${user.avatar_url}`} />
                                                     <TableDataName>
-                                                        {user.name}
+                                                        {user.login}
                                                     </TableDataName>
                                                 </TableDataNameContainer>
                                             </TableDataCell>
-                                            <TableDataCell>
-                                                <TableDataLocation>
-                                                    {user.location}
-                                                </TableDataLocation>
-                                            </TableDataCell>
+
                                             <TableDataCell>
                                                 <TableDataMeta>
-                                                    <TableDataMetaFollow href={`http://localhost:4000/twitterfollow?screen_name=${user.twitter}`} >
-                                                        Follow on Twitter
-                                                        <TwitterIcon />
-                                                    </TableDataMetaFollow>
-                                                    <TableDataMetaLink href={`https://www.twitter.com/${user.twitter}`} target="blank" rel="noopener noreferrer">
-                                                        <TwitterIcon />
-                                                    </TableDataMetaLink>
-                                                    <TableDataMetaLink href={user.twitter} target="blank" rel="noopener noreferrer">
-                                                        <GitHubIcon />
+                                                    <TableDataMetaLink href={user.html_url} target="blank" rel="noopener noreferrer">
+                                                        Visit their profile
                                                     </TableDataMetaLink>
                                                 </TableDataMeta>
                                             </TableDataCell>

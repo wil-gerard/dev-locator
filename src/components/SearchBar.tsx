@@ -5,7 +5,7 @@ import store from '../store'
 import { userSearch } from '../hooks/userSearch'
 
 const SearchBarContainer = styled.header`
-    ${tw`flex items-center justify-center bg-secondary-700 p-6 lg:p-10 w-full mb-6 lg:mb-12`}
+    ${tw`flex items-center justify-center bg-secondary-700 p-6 lg:p-10 w-full`}
 `
 const SearchInput = styled.form`
   ${tw`relative max-w-md text-center mx-auto lg:mx-0`}
@@ -25,11 +25,10 @@ export const SearchBar: React.FC = () => {
   const usersLocationRef = useRef<HTMLInputElement>(null)
 
   function handleSubmit() {
-    if (usersLocationRef && usersLocationRef){
-      store.userLocation = usersLocationRef?.current?.value
+    if (null !== usersLocationRef.current){
+      store.userLocation = usersLocationRef.current.value
+      console.log(snap.userLocation)
     }
-    store.userLocation = usersLocationRef?.current?.value
-    console.log(snap.userLocation)
   }
 
   return (
