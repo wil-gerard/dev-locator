@@ -1,5 +1,5 @@
 import tw from 'twin.macro'
-import { ArrowRightIcon } from '@primer/octicons-react'
+import { ArrowRightIcon, ArrowLeftIcon } from '@primer/octicons-react'
 import store from '../store'
 import { useSnapshot } from 'valtio'
 
@@ -11,7 +11,13 @@ const Header = tw.h2`font-semibold text-gray-300`
 
 const NavContainer = tw.nav`flex justify-end`
 
-const NavNextPage = tw(ArrowRightIcon)`cursor-pointer transition duration-300 hocus:text-primary-500`
+const NavNextPageIcon = tw(ArrowRightIcon)`cursor-pointer transition duration-300 hocus:text-primary-500`
+
+const NavNextPage = tw.button`cursor-pointer transition duration-300 hocus:text-primary-500`
+
+const NavPreviousPageIcon = tw(ArrowLeftIcon)`cursor-pointer transition duration-300 hocus:text-primary-500`
+
+const NavPreviousPage = tw(NavNextPage)``
 
 const TableContainer = tw.div`w-full max-w-lg mx-auto shadow-lg rounded bg-secondary-800`
 
@@ -41,6 +47,15 @@ const TableDataMetaLink = tw.a`flex items-center justify-center rounded shadow c
 
 export default function UserTable() {
     const snap = useSnapshot(store)
+    
+
+    const handleNextPage = () => {
+        store.page++
+    }
+
+    const handlePreviousPage = () => {
+        store.page--
+    }
 
     return (
         <>
@@ -51,7 +66,12 @@ export default function UserTable() {
                             {snap.totalUsersCount === 0 ? `Go find some devs...` : `${snap.totalUsersCount} GitHub users in ${snap.userLocation}`}
                         </Header>
                         <NavContainer>
-                            <NavNextPage />
+                            <NavPreviousPage onClick={handlePreviousPage} >
+                                <NavPreviousPageIcon />
+                            </NavPreviousPage>
+                            <NavNextPage onClick={handleNextPage} >
+                                <NavNextPageIcon />
+                            </NavNextPage>
                         </NavContainer>
                     </HeaderContainer>
                     <TablePadding>
