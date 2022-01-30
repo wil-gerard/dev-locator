@@ -25,7 +25,8 @@ export const SearchBar: React.FC = () => {
   const usersLocationRef = useRef<HTMLInputElement>(null)
 
   function handleSubmit() {
-    if (null !== usersLocationRef.current){
+    if (null !== usersLocationRef.current && usersLocationRef.current.value !== store.userLocation) {
+      store.page = 1
       store.userLocation = usersLocationRef.current.value
     }
   }

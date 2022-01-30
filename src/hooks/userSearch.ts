@@ -15,7 +15,7 @@ export type UsersResponse = OctokitResponse<Users>
 
 export const RESULTS_PER_PAGE = 20
 
-export const userSearch = async (location: string, page: number, resultsPerPage = RESULTS_PER_PAGE) => {
+export const userSearch = async (location: string, page = 1, resultsPerPage = RESULTS_PER_PAGE) => {
 
   const octokit = new Octokit({ auth: process.env.REACT_APP_GITHUB_ACCESS_TOKEN })
 
@@ -27,7 +27,7 @@ export const userSearch = async (location: string, page: number, resultsPerPage 
       totalCount: 0
     }
   }
-
+  
   const UsersResponse = (await octokit?.search.users({
     q: `location:${location}`,
     per_page: resultsPerPage,
