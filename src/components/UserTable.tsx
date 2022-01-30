@@ -9,16 +9,6 @@ const HeaderContainer = tw.header`px-5 py-4 border-b border-gray-100`
 
 const Header = tw.h2`font-semibold text-gray-300`
 
-const NavContainer = tw.nav`flex justify-end`
-
-const NavNextPageIcon = tw(ArrowRightIcon)`cursor-pointer transition duration-300 hocus:text-primary-500`
-
-const NavNextPage = tw.button`cursor-pointer transition duration-300 hocus:text-primary-500`
-
-const NavPreviousPageIcon = tw(ArrowLeftIcon)`cursor-pointer transition duration-300 hocus:text-primary-500`
-
-const NavPreviousPage = tw(NavNextPage)``
-
 const TableContainer = tw.div`w-full max-w-lg mx-auto shadow-lg rounded bg-secondary-800`
 
 const Table = tw.table`table-auto w-full`
@@ -44,6 +34,18 @@ const TableDataName = tw.div`font-medium text-gray-100`
 const TableDataMeta = tw.div`font-medium text-gray-100 text-left flex flex-row`
 
 const TableDataMetaLink = tw.a`flex items-center justify-center rounded shadow cursor-pointer bg-secondary-600 transition duration-300 hocus:bg-primary-500  ml-1 py-0.5 px-2`
+
+const NavContainer = tw.nav`px-5 py-4 border-t border-gray-100 justify-between flex`
+
+const NavNextPageIcon = tw(ArrowRightIcon)`cursor-pointer transition duration-300 hocus:text-primary-500`
+
+const NavNextPage = tw.button`cursor-pointer transition duration-300 hocus:text-primary-500`
+
+const NavPreviousPageIcon = tw(ArrowLeftIcon)`cursor-pointer transition duration-300 hocus:text-primary-500`
+
+const NavPreviousPage = tw(NavNextPage)``
+
+const NavPageInfo = tw.span``
 
 export default function UserTable() {
     const snap = useSnapshot(store)
@@ -112,6 +114,9 @@ export default function UserTable() {
                         <NavPreviousPage onClick={handlePreviousPage} >
                             <NavPreviousPageIcon />
                         </NavPreviousPage>
+                        <NavPageInfo>
+                            {`Page ${store.page} of ${store.pageCount}`}
+                        </NavPageInfo>
                         <NavNextPage onClick={handleNextPage} >
                             <NavNextPageIcon />
                         </NavNextPage>
