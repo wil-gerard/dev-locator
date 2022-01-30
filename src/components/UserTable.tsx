@@ -110,17 +110,20 @@ export default function UserTable() {
                             </TableBody>
                         </Table>
                     </TablePadding>
-                    <NavContainer>
-                        <NavPreviousPage onClick={handlePreviousPage} >
-                            <NavPreviousPageIcon />
-                        </NavPreviousPage>
-                        <NavPageInfo>
-                            {`Page ${store.page} of ${store.pageCount}`}
-                        </NavPageInfo>
-                        <NavNextPage onClick={handleNextPage} >
-                            <NavNextPageIcon />
-                        </NavNextPage>
-                    </NavContainer>
+                    {store.pageCount > 2 ? 
+                        <NavContainer>
+                            <NavPreviousPage onClick={handlePreviousPage} >
+                                <NavPreviousPageIcon />
+                            </NavPreviousPage>
+                            <NavPageInfo>
+                                {`Page ${store.page} of ${store.pageCount}`}
+                            </NavPageInfo>
+                            <NavNextPage onClick={handleNextPage} >
+                                <NavNextPageIcon />
+                            </NavNextPage>
+                        </NavContainer>
+                        : null
+                    }
                 </TableContainer>
             </Content>
         </>
