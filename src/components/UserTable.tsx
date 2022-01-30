@@ -47,14 +47,17 @@ const TableDataMetaLink = tw.a`flex items-center justify-center rounded shadow c
 
 export default function UserTable() {
     const snap = useSnapshot(store)
-    
 
     const handleNextPage = () => {
-        store.page++
+        if (store.page < store.pageCount) {
+            store.page++
+        }
     }
 
     const handlePreviousPage = () => {
-        store.page--
+        if (store.page > 1) {
+            store.page--
+        }
     }
 
     return (
@@ -65,14 +68,6 @@ export default function UserTable() {
                         <Header>
                             {snap.totalUsersCount === 0 ? `Go find some devs...` : `${snap.totalUsersCount} GitHub users in ${snap.userLocation}`}
                         </Header>
-                        <NavContainer>
-                            <NavPreviousPage onClick={handlePreviousPage} >
-                                <NavPreviousPageIcon />
-                            </NavPreviousPage>
-                            <NavNextPage onClick={handleNextPage} >
-                                <NavNextPageIcon />
-                            </NavNextPage>
-                        </NavContainer>
                     </HeaderContainer>
                     <TablePadding>
                         <Table>
@@ -113,6 +108,14 @@ export default function UserTable() {
                             </TableBody>
                         </Table>
                     </TablePadding>
+                    <NavContainer>
+                        <NavPreviousPage onClick={handlePreviousPage} >
+                            <NavPreviousPageIcon />
+                        </NavPreviousPage>
+                        <NavNextPage onClick={handleNextPage} >
+                            <NavNextPageIcon />
+                        </NavNextPage>
+                    </NavContainer>
                 </TableContainer>
             </Content>
         </>

@@ -27,7 +27,6 @@ export const SearchBar: React.FC = () => {
   function handleSubmit() {
     if (null !== usersLocationRef.current){
       store.userLocation = usersLocationRef.current.value
-      console.log(snap.userLocation)
     }
   }
 
