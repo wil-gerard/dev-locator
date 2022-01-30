@@ -1,5 +1,6 @@
 import React, { useRef } from 'react'
-import tw, { styled } from 'twin.macro'
+import tw from 'twin.macro'
+import styled from 'styled-components'
 import { useSnapshot } from 'valtio'
 import store from '../store'
 import { userSearch } from '../hooks/userSearch'
