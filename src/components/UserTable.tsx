@@ -37,11 +37,11 @@ const TableDataMetaLink = tw.a`flex items-center justify-center rounded shadow c
 
 const NavContainer = tw.nav`px-5 py-4 border-t border-gray-100 justify-between flex`
 
-const NavNextPageIcon = tw(ArrowRightIcon)`cursor-pointer transition duration-300 hocus:text-primary-500`
+const NavNextPageIcon = tw(ArrowRightIcon)``
 
-const NavNextPage = tw.button`cursor-pointer transition duration-300 hocus:text-primary-500`
+const NavNextPage = tw.button`cursor-pointer transition duration-300 hover:text-primary-500 disabled:cursor-not-allowed disabled:hover:text-secondary-100 disabled:text-secondary-100`
 
-const NavPreviousPageIcon = tw(ArrowLeftIcon)`cursor-pointer transition duration-300 hocus:text-primary-500`
+const NavPreviousPageIcon = tw(ArrowLeftIcon)``
 
 const NavPreviousPage = tw(NavNextPage)``
 
@@ -110,16 +110,16 @@ export default function UserTable() {
                             </TableBody>
                         </Table>
                     </TablePadding>
-                    {store.pageCount > 2 ? 
+                    {store.pageCount > 2 ?
                         <NavContainer>
-                            <NavPreviousPage onClick={handlePreviousPage} >
-                                <NavPreviousPageIcon />
+                            <NavPreviousPage disabled={store.page > 1 ? false : true} onClick={handlePreviousPage} >
+                                <NavPreviousPageIcon size={24} />
                             </NavPreviousPage>
                             <NavPageInfo>
                                 {`Page ${store.page} of ${store.pageCount}`}
                             </NavPageInfo>
-                            <NavNextPage onClick={handleNextPage} >
-                                <NavNextPageIcon />
+                            <NavNextPage disabled={store.page < store.pageCount ? false : true} onClick={handleNextPage} >
+                                <NavNextPageIcon size={24} />
                             </NavNextPage>
                         </NavContainer>
                         : null
