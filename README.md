@@ -16,6 +16,7 @@ Dev Locator is an application that allows users to easily find and connect with 
 - Display amount of queries available within GitHub's search API rate limit
 - Allow users to fetch a specific search results detailed information (bio, followers, following, total stars, etc.)
 - Store previous page results in a proxy state using Valtio
+- Improve the accessibility with more accurate html symantics and a text-to-speech feature
 
 ## Style, Design, And Architecture
 
