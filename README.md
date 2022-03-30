@@ -11,18 +11,17 @@ Dev Locator is an application that allows users to easily find and connect with 
 - Navigate search results through a paginated list
 - Search results display GitHub username, profile picture, and a link to their GitHub page
 
-### In development
+### Improvements
 
 - Display amount of queries available within GitHub's search API rate limit
 - Allow users to fetch a specific search results detailed information (bio, followers, following, total stars, etc.)
 - Store previous page results in a proxy state using Valtio
-- Improve the accessibility with more accurate html symantics and a text-to-speech feature
 
 ## Style, Design, And Architecture
 
 ### Preview
 
-![preview](https://user-images.githubusercontent.com/74286884/151723427-5c566fe3-5540-4cec-953b-a16f067540ff.png)
+![preview](https://user-images.githubusercontent.com/74286884/160909429-79e177ac-6774-4c84-8d52-d178877b052e.png)
 
 ### Built With
 
@@ -31,7 +30,7 @@ Dev Locator is an application that allows users to easily find and connect with 
   - [Tailwind CSS](https://tailwindcss.com/)
   - [Valtio](https://github.com/pmndrs/valtio)
 
-## Development Contributors:
+## Quickstart:
 
 These instructions will give you a copy of the project up and running on
 your local machine for development and testing purposes.
