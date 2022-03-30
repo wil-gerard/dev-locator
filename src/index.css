@@ -4,6 +4,6 @@
 @tailwind utilities;
 
 html {
-  background-color: #16253b;
+  background-color: #fff;
   @apply font-display;
 }
